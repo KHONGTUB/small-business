@@ -12,6 +12,19 @@ export const removeListing = (index) => {
   };
 };
 
+export const addUser = (userName) => {
+  return {
+    type: "ADD_USER",
+    value: userName
+  }
+}
+
+export const removeUser = () => {
+  return{
+    type: "REMOVE_USER"
+  }
+}
+
 export const login = (isLoggedIn) => {
   return {
     type: "LOGIN",

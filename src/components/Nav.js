@@ -9,7 +9,8 @@ import cookie from "cookie";
 
 export default function Nav(props) {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <div>
+      <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -37,6 +38,7 @@ export default function Nav(props) {
                       maxAge: 0,
                     });
                     props.logout(false);
+                    
                   }}
                 >
                   Logout
@@ -47,6 +49,12 @@ export default function Nav(props) {
           </ul>
         </Toolbar>
       </AppBar>
+      
     </Box>
+    <div>{props.loggedIn && (
+      <h3>{props.username}</h3>
+    )}</div>
+    </div>
+    
   );
 }

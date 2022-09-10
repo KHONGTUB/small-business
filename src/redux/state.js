@@ -1,8 +1,5 @@
-export default {
-  user: {
-    username: "",
-    password: "",
-  },
+const state = {
+  username: '',
   listings: [
     {
       name: "Madam Mams Thai Cuisine",
@@ -21,3 +18,6 @@ export default {
   ],
   loggedIn: false,
 };
+
+
+export default state

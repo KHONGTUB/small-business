@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Container } from "@mui/material";
@@ -6,19 +6,10 @@ import { TextField, Button, Container } from "@mui/material";
 const Login = (props) => {
   const navigate = useNavigate();
 
-  const [state, setState] = useState({
-    username: "",
-    password: "",
-  });
 
   const handleTextChange = (e) => {
-    const { name, value } = e.target;
-    setState((prevState) => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
+    const {  value } = e.target;
+    props.addUser(value)
   };
 
   const login = (e) => {
@@ -36,15 +27,14 @@ const Login = (props) => {
           <TextField
             required
             onChange={handleTextChange}
-            value={state.username}
             name="username"
             label="Username"
             type="text"
           />
           <TextField
             required
-            onChange={handleTextChange}
-            value={state.password}
+
+
             name="password"
             label="Password"
             type="password"
