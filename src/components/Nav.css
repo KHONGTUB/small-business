@@ -1,0 +1,12 @@
+.navlist{
+    list-style: none;
+    display: flex;
+}
+
+ul{
+    padding-inline-start: 20px;
+}
+
+.navitem {
+    margin: auto 20px;
+  }

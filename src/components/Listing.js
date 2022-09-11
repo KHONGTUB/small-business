@@ -6,6 +6,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Paper from "@mui/material/Paper";
 import "./Listing.css";
 
@@ -13,18 +14,14 @@ export default function Listing(props) {
   const [isClicked, setIsClicked] = useState(false);
   const [display, setIsDisplay] = useState([]);
 
-  function displayDetails(text) {
-    setIsDisplay(
-      props.listings.find((element) => {
-        return element["name"] === text;
-      })
-    );
-  }
-
   return (
     <div>
       {isClicked === false ? (
-        <TableContainer className="Table" component={Paper}>
+        <TableContainer
+          style={{ width: "90vw" }}
+          className="Table"
+          component={Paper}
+        >
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -35,12 +32,16 @@ export default function Listing(props) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {props.listings.map((business) => (
+              {props.listings.map((business, index) => (
                 <TableRow key={business["name"]}>
                   <TableCell
                     onClick={(e) => {
                       setIsClicked(!isClicked);
-                      displayDetails(e.target.innerText);
+                      setIsDisplay(
+                        props.listings.find((element) => {
+                          return element["name"] === e.target.innerText;
+                        })
+                      );
                     }}
                     component="th"
                     scope="row"
@@ -50,7 +51,14 @@ export default function Listing(props) {
                   <TableCell>{business["description"]}</TableCell>
                   <TableCell>{business["hours"]}</TableCell>
                   <TableCell>{business["address"]}</TableCell>
-                  {props.loggedIn === true && <TableCell>Delete</TableCell>}
+                  {props.loggedIn === true && (
+                    <TableCell>
+                      <DeleteIcon
+                        onClick={() => props.removeListing(index)}
+                        style={{ color: "red" }}
+                      />
+                    </TableCell>
+                  )}
                 </TableRow>
               ))}
             </TableBody>

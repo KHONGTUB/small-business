@@ -1,25 +1,84 @@
-import React from "react";
-import Box from "@mui/material/Box";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import "./AddListing.css";
+import { Button } from "@mui/material";
 
-export default function AddListing() {
+export default function AddListing(props) {
+  const [state, setState] = useState({
+    name: "",
+    address: "",
+    hours: "",
+    description: "",
+  });
+
+  const handleTextChange = (e) => {
+    const { name, value } = e.target;
+    setState((prevstate) => {
+      return {
+        ...prevstate,
+        [name]: value,
+      };
+    });
+  };
+
   return (
     <div>
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1, width: "25ch" },
+      <form
+        className="addform"
+        onSubmit={(e) => {
+          e.preventDefault();
+          props.addListing(state);
+          setState(() => {
+            return {
+              name: "",
+              address: "",
+              hours: "",
+              description: "",
+            };
+          });
         }}
-        noValidate
-        autoComplete="off"
-        className="input"
       >
-        <TextField id="name" label="Name" variant="standard" />
-        <TextField id="address" label="Address" variant="standard" />
-        <TextField id="hours" label="Hours" variant="standard" />
-        <TextField id="description" label="Description" variant="standard" />
-      </Box>
+        <TextField
+          id="name"
+          name="name"
+          value={state.name}
+          onChange={handleTextChange}
+          label="Name"
+          variant="standard"
+        />
+        <TextField
+          id="address"
+          name="address"
+          value={state.address}
+          onChange={handleTextChange}
+          label="Address"
+          variant="standard"
+        />
+        <TextField
+          id="hours"
+          name="hours"
+          value={state.hours}
+          onChange={handleTextChange}
+          label="Hours"
+          variant="standard"
+        />
+        <TextField
+          id="description"
+          name="description"
+          value={state.description}
+          onChange={handleTextChange}
+          label="Description"
+          variant="standard"
+        />
+        <Button
+          type="submit"
+          className="submit_button"
+          variant="contained"
+          color="primary"
+        >
+          submit
+        </Button>
+      </form>
     </div>
   );
 }
