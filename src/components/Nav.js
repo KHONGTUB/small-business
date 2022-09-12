@@ -10,19 +10,30 @@ import "./Nav.css";
 export default function Nav(props) {
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar  position="static">
+      <Box className="box" sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
           <Toolbar className="navbar">
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Austin Small Business
             </Typography>
             <ul className="navlist">
               <li className="navitem">
-                <Link className="link" to="/Listing">Listings</Link>
+                <Link className="link" to="/Listing">
+                  Listings
+                </Link>
+              </li>
+              <li className="navitem">
+                {props.loggedIn && (
+                  <Link className="link" to="/AddListing">
+                    Add
+                  </Link>
+                )}
               </li>
               <li className="navitem">
                 {!props.loggedIn ? (
-                  <Link className="link" to="/">LOGIN</Link>
+                  <Link className="link" to="/">
+                    Login
+                  </Link>
                 ) : (
                   <Link
                     className="link"
@@ -38,13 +49,14 @@ export default function Nav(props) {
                   </Link>
                 )}
               </li>
-              <li className="navitem">
-                {props.loggedIn && <Link className="link" to="/AddListing">Add</Link>}
-              </li>
             </ul>
           </Toolbar>
-          <div className="username">{props.loggedIn && <h3>{props.username}</h3>}</div>
         </AppBar>
+        {props.loggedIn && (
+          <div className="username">
+            <div>Logged in as: {props.username}</div>
+          </div>
+        )}
       </Box>
     </div>
   );

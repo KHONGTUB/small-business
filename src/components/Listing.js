@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -35,6 +35,7 @@ export default function Listing(props) {
               {props.listings.map((business, index) => (
                 <TableRow key={business["name"]}>
                   <TableCell
+                    className="nameUnderline"
                     onClick={(e) => {
                       setIsClicked(!isClicked);
                       setIsDisplay(
@@ -66,12 +67,7 @@ export default function Listing(props) {
         </TableContainer>
       ) : (
         <div>
-          <div className="Details">
-            <h1 className="Title">{display["name"]}</h1>
-            <h3 className="Address">{display["address"]}</h3>
-            <h3 className="Open">{display["hours"]}</h3>
-            <p className="Desc">{display["description"]}</p>
-            <button 
+          <button
             className="returnButton"
             onClick={() => {
               setIsClicked(!isClicked);
@@ -79,8 +75,24 @@ export default function Listing(props) {
           >
             Return
           </button>
+          <div className="Details">
+            <h1 className="Title">{display["name"]}</h1>
+            <h3 className="Address">{display["address"]}</h3>
+            <h3 className="Open">{display["hours"]}</h3>
+            <p className="Desc">{display["description"]}</p>
+            <img
+              className="map"
+              src={`https://maps.googleapis.com/maps/api/staticmap?center=${display[
+                "address"
+              ].replaceAll(
+                " ",
+                "+"
+              )}&zoom=14&size=650x550&markers=color:red|${display[
+                "address"
+              ].replaceAll(" ", "+")}&key=${process.env.REACT_APP_KEY}`}
+              alt="location_map"
+            />
           </div>
-
         </div>
       )}
     </div>

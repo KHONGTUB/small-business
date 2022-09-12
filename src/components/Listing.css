@@ -7,15 +7,27 @@
 .Details{
     width: 50vw;
     margin: 0 auto;
-    margin-top: 10%;
 }
 
 .returnButton{
     width: 70px;
     height: 30px;
-    background-color: rgb(0, 241, 0);
+    background-color: lightgrey;
     text-align: center;
     font-size: large;
     border-width: 0;
     border-radius: 10%;
+    margin: 10px 0px 0px 10px;
+}
+
+.returnButton:hover{
+    background-color: rgb(170, 169, 169);
+}
+
+.nameUnderline{
+    text-decoration: underline;
+}
+
+.nameUnderline:hover {
+    text-decoration:none;
 }

@@ -51,7 +51,7 @@ export default function AddListing(props) {
           name="address"
           value={state.address}
           onChange={handleTextChange}
-          label="Address"
+          label="Address (ex: 1234 Roundway RD, Austin, TX, 78748)"
           variant="standard"
         />
         <TextField
@@ -59,7 +59,7 @@ export default function AddListing(props) {
           name="hours"
           value={state.hours}
           onChange={handleTextChange}
-          label="Hours"
+          label="Hours (ex: 8AM - 9PM)"
           variant="standard"
         />
         <TextField
