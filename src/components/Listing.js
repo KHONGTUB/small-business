@@ -71,14 +71,16 @@ export default function Listing(props) {
             <h3 className="Address">{display["address"]}</h3>
             <h3 className="Open">{display["hours"]}</h3>
             <p className="Desc">{display["description"]}</p>
-          </div>
-          <button
+            <button 
+            className="returnButton"
             onClick={() => {
               setIsClicked(!isClicked);
             }}
           >
             Return
           </button>
+          </div>
+
         </div>
       )}
     </div>

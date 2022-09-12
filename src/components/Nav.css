@@ -10,3 +10,12 @@ ul{
 .navitem {
     margin: auto 20px;
   }
+
+.navbar{
+    background-color: rgb(17, 181, 17);
+}
+
+.link{
+    color: white;
+    text-decoration: none;
+}
