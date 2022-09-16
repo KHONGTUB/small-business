@@ -3,13 +3,13 @@ import { combineReducers } from "redux";
 const username = (state = null, action) => {
   switch (action.type) {
     case "ADD_USER":
-      return action.value
+      return action.value;
     case "REMOVE_USER":
-      return ''
-    default: 
-      return state
+      return "";
+    default:
+      return state;
   }
-} ;
+};
 
 const listings = (state = [], action) => {
   switch (action.type) {
@@ -35,4 +35,15 @@ const loggedIn = (state = false, action) => {
   }
 };
 
-export default combineReducers({ listings, username, loggedIn });
+const coords = (state = [], action) => {
+  switch (action.type) {
+    case "FETCH_COORDS":
+      return action.value;
+    case "DELETE_COORDS":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({ listings, username, loggedIn, coords });

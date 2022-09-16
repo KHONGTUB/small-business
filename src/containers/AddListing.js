@@ -1,16 +1,23 @@
 import { connect } from "react-redux";
 import AddListing from "../components/AddListing";
-import { addListing } from "../redux/actions";
+import {
+  addListing,
+  fetchCoordinates,
+  deleteCoordinates,
+} from "../redux/actions";
 
 const mapStateToProps = (state) => {
   return {
-    state: state.listings,
+    listings: state.listings,
+    coords: state.coords,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addListing: (listing) => dispatch(addListing(listing)),
+    fetchCoordinates: (address) => dispatch(fetchCoordinates(address)),
+    deleteCoordinates: () => dispatch(deleteCoordinates()),
   };
 };
 

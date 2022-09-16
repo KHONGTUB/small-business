@@ -6,16 +6,15 @@ import { TextField, Button, Container } from "@mui/material";
 const Login = (props) => {
   const navigate = useNavigate();
 
-
   const handleTextChange = (e) => {
-    const {  value } = e.target;
-    props.addUser(value)
+    const { value } = e.target;
+    props.addUser(value);
   };
 
   const login = (e) => {
     e.preventDefault();
 
-    document.cookie = "loggedIn=true;max-age=60";
+    document.cookie = "loggedIn=true;max-age=120";
     props.login(true);
     navigate("/Listing");
   };
@@ -33,8 +32,6 @@ const Login = (props) => {
           />
           <TextField
             required
-
-
             name="password"
             label="Password"
             type="password"

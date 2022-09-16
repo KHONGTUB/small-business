@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import "./AddListing.css";
 import { Button } from "@mui/material";
+import GoogleMapReact from "google-map-react";
+import RoomIcon from "@mui/icons-material/Room";
 
 export default function AddListing(props) {
   const [state, setState] = useState({
@@ -11,8 +13,16 @@ export default function AddListing(props) {
     description: "",
   });
 
+  useEffect(() => {
+    props.deleteCoordinates();
+  }, []);
+
   const handleTextChange = (e) => {
     const { name, value } = e.target;
+    if (name === "address") {
+      props.fetchCoordinates(value);
+    }
+
     setState((prevstate) => {
       return {
         ...prevstate,
@@ -22,7 +32,7 @@ export default function AddListing(props) {
   };
 
   return (
-    <div>
+    <div className="addPage">
       <form
         className="addform"
         onSubmit={(e) => {
@@ -36,6 +46,7 @@ export default function AddListing(props) {
               description: "",
             };
           });
+          props.deleteCoordinates();
         }}
       >
         <TextField
@@ -51,7 +62,7 @@ export default function AddListing(props) {
           name="address"
           value={state.address}
           onChange={handleTextChange}
-          label="Address (ex: 1234 Roundway RD, Austin, TX, 78748)"
+          label="Address (ex: 1234 Roundway RD, Austin, TX 78748)"
           variant="standard"
         />
         <TextField
@@ -76,9 +87,26 @@ export default function AddListing(props) {
           variant="contained"
           color="primary"
         >
-          submit
+          Save
         </Button>
       </form>
+      <div className="map" style={{ height: 500, width: 500 }}>
+        {Object.keys(props.coords).length !== 0 && (
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: process.env.REACT_APP_KEY }}
+            defaultCenter={{ lat: 30.2672, lng: -97.7431 }}
+            defaultZoom={12}
+            center={props.coords}
+            zoom={14}
+          >
+            <RoomIcon
+              style={{ color: "red" }}
+              lat={props.coords.lat}
+              lng={props.coords.lng}
+            />
+          </GoogleMapReact>
+        )}
+      </div>
     </div>
   );
 }

@@ -22,13 +22,14 @@ export default function Nav(props) {
                   Listings
                 </Link>
               </li>
-              <li className="navitem">
-                {props.loggedIn && (
+              {props.loggedIn && (
+                <li className="navitem">
                   <Link className="link" to="/AddListing">
                     Add
                   </Link>
-                )}
-              </li>
+                </li>
+              )}
+
               <li className="navitem">
                 {!props.loggedIn ? (
                   <Link className="link" to="/">

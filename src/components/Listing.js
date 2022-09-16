@@ -7,8 +7,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import DeleteIcon from "@mui/icons-material/Delete";
+import RoomIcon from "@mui/icons-material/Room";
 import Paper from "@mui/material/Paper";
 import "./Listing.css";
+import GoogleMapReact from "google-map-react";
 
 export default function Listing(props) {
   const [isClicked, setIsClicked] = useState(false);
@@ -37,6 +39,7 @@ export default function Listing(props) {
                   <TableCell
                     className="nameUnderline"
                     onClick={(e) => {
+                      props.fetchCoordinates(business["address"]);
                       setIsClicked(!isClicked);
                       setIsDisplay(
                         props.listings.find((element) => {
@@ -80,18 +83,24 @@ export default function Listing(props) {
             <h3 className="Address">{display["address"]}</h3>
             <h3 className="Open">{display["hours"]}</h3>
             <p className="Desc">{display["description"]}</p>
-            <img
-              className="map"
-              src={`https://maps.googleapis.com/maps/api/staticmap?center=${display[
-                "address"
-              ].replaceAll(
-                " ",
-                "+"
-              )}&zoom=14&size=650x550&markers=color:red|${display[
-                "address"
-              ].replaceAll(" ", "+")}&key=${process.env.REACT_APP_KEY}`}
-              alt="location_map"
-            />
+            <div style={{ height: 600, width: 600 }}>
+              <GoogleMapReact
+                bootstrapURLKeys={{
+                  key: process.env.REACT_APP_KEY,
+                  language: "en",
+                }}
+                defaultCenter={{ lat: 30.2672, lng: -97.7431 }}
+                defaultZoom={12}
+                center={props.coords}
+                zoom={15}
+              >
+                <RoomIcon
+                  style={{ color: "red" }}
+                  lat={props.coords.lat}
+                  lng={props.coords.lng}
+                />
+              </GoogleMapReact>
+            </div>
           </div>
         </div>
       )}
