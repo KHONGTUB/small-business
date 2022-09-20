@@ -19,7 +19,7 @@ const state = {
       name: "Ramen Tatsu-ya",
       description:
         "Ramen Tatsu-ya is the long-awaited collaboration between local chefs/DJs, Tatsu Aikawa and Takuya Matsumoto. The two of them first met as they were busy making their marks on the Austin scene as hip-hop DJs. After following an eerily parallel timeline, honing their crafts at notable Austin establishments such as Musashino and Second Bar + Kitchen, Tatsu took a leap and moved to Los Angeles. There, he worked in one of the nation’s most respected Kaiseki/Sushi bars, the two Michelin star restaurant Urasawa.",
-      hours: "11:00 AM - 10 PM",
+      hours: "11:00 AM - 10:00 PM",
       address: "1600 E 6th St, Austin, TX 78702",
     },
     {
