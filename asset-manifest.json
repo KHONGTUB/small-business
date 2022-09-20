@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.ae89c00c.css",
-    "main.js": "/react-gh-pages/static/js/main.a9c60efd.js",
-    "static/js/787.47fc8938.chunk.js": "/react-gh-pages/static/js/787.47fc8938.chunk.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.ae89c00c.css.map": "/react-gh-pages/static/css/main.ae89c00c.css.map",
-    "main.a9c60efd.js.map": "/react-gh-pages/static/js/main.a9c60efd.js.map",
-    "787.47fc8938.chunk.js.map": "/react-gh-pages/static/js/787.47fc8938.chunk.js.map"
+    "main.css": "/small-business/static/css/main.ae89c00c.css",
+    "main.js": "/small-business/static/js/main.e7993a41.js",
+    "static/js/787.47fc8938.chunk.js": "/small-business/static/js/787.47fc8938.chunk.js",
+    "index.html": "/small-business/index.html",
+    "main.ae89c00c.css.map": "/small-business/static/css/main.ae89c00c.css.map",
+    "main.e7993a41.js.map": "/small-business/static/js/main.e7993a41.js.map",
+    "787.47fc8938.chunk.js.map": "/small-business/static/js/787.47fc8938.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ae89c00c.css",
-    "static/js/main.a9c60efd.js"
+    "static/js/main.e7993a41.js"
   ]
 }
